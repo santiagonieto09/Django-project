@@ -1,0 +1,56 @@
+{% extends 'user_base.html' %}
+
+{% block content %}
+
+<main class="container mt-5">
+    <div class="row">
+
+        <div class="col-md-4 mt-5">
+            <img src="{{ movie.image_url }}" alt="{{ movie.title }} Image" class="img-fluid">
+        </div>
+        <div class="col-md-8 mt-5">
+
+            <h1 class="text-primary fw-bold">{{ movie.title }}</h1>
+            <p>{{ movie.description }}</p>
+            <p>Director: {{ movie.director }}</p>
+            <p>Release Year: {{ movie.release_year }}</p>
+            <p>Duration: {{ movie.duration }} minutes</p>
+            <p>Age Rating: {{ movie.age_rating }}</p>
+            <p>Genre: {{ movie.genre }}</p>
+            <p>Rating: {{ movie.rating }}</p>
+            <form method="POST" action="{% url 'user_movie_add' movie.id %}">
+                {% csrf_token %}
+                <button class="btn btn-info mt-5 fw-bold">Add to My List</button>
+            </form>
+
+
+
+        </div>
+    </div>
+
+    <div class="mt-5">
+        <h4>Watch Trailer:</h4>
+        <div class="ratio ratio-16x9 mt-5 video-container">
+            <iframe width="560" height="315" src="{{ movie.trailer_url }}" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+
+    {% if error %}
+    <div id="errorToast" class="toast align-items-center position-fixed top-0 start-50 translate-middle-x" role="alert"
+        aria-live="assertive" aria-atomic="true" style="z-index: 9999;">
+        <div class="d-flex align-items-center">
+            <div class="toast-body text-danger fw-bold">
+                <i class="bi bi-exclamation-triangle-fill text-danger me-2"></i>
+                {{ error }}
+            </div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+    {% endif %}
+
+</main>
+
+
+
+{% endblock %}

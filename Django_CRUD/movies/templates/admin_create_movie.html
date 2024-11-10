@@ -1,0 +1,38 @@
+{% extends 'admin_base.html' %}
+
+{% block content %}
+
+<main class="container mt-5">
+    <div class="row">
+
+        <div class="col-md-6 offset-md-3 mt-5">
+            <form method="POST" class="card card-body bg-black bg-gradient">
+                <h1 class="fw-bold">Create Movie</h1>
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button class="btn btn-info fw-bold">
+                    Save
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+
+    {% if error %}
+    <div id="errorToast" class="toast align-items-center position-fixed top-0 start-50 translate-middle-x" role="alert"
+        aria-live="assertive" aria-atomic="true" style="z-index: 9999;">
+        <div class="d-flex align-items-center">
+            <div class="toast-body text-danger fw-bold">
+                <i class="bi bi-exclamation-triangle-fill text-danger me-2"></i>
+                {{ error }}
+            </div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+    {% endif %}
+</main>
+
+{% endblock %}

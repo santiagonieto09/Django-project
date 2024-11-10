@@ -1,0 +1,58 @@
+{% extends 'user_base.html' %}
+
+{% block content %}
+
+<main class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2 mt-5">
+            <div class="row">
+
+                <div class="col-md-4">
+                    <img src="{{ movie.image_url }}" alt="{{ movie.title }} Image" class="img-fluid">
+                </div>
+                <div class="col-md-8">
+                    <h1 class="text-primary fw-bold">{{ movie.title }}</h1>
+                    <p>{{ movie.description }}</p>
+                    <p>Director: {{ movie.director }}</p>
+                    <p>Release Year: {{ movie.release_year }}</p>
+                    <p>Duration: {{ movie.duration }} minutes</p>
+                    <p>Age Rating: {{ movie.age_rating }}</p>
+                    <p>Genre: {{ movie.genre }}</p>
+                    <p>Rating: {{ movie.rating }}</p>
+                    <form method="POST" action="{% url 'user_movie_delete' movie.id %}">
+                        {% csrf_token %}
+                        <button class="btn btn-danger fw-bold">Delete from My List</button>
+                    </form>
+                    <form method="POST" action="{% url 'user_movie_rate' movie.id %}">
+                        {% csrf_token %}
+                        <div class="mt-3 mb-3">
+                            <label for="rating">Rating:</label>
+                            <div class="rating" id="rating">
+                                <input type="radio" id="star5" name="rating" value="5" /><label for="star5"
+                                    title="Rocks!">5
+                                    stars</label>
+                                <input type="radio" id="star4" name="rating" value="4" /><label for="star4"
+                                    title="Pretty good">4 stars</label>
+                                <input type="radio" id="star3" name="rating" value="3" /><label for="star3"
+                                    title="Meh">3
+                                    stars</label>
+                                <input type="radio" id="star2" name="rating" value="2" /><label for="star2"
+                                    title="Kinda bad">2 stars</label>
+                                <input type="radio" id="star1" name="rating" value="1" /><label for="star1"
+                                    title="Sucks big time">1 star</label>
+                            </div>
+                            <button type="submit" class="btn btn-info mt-5 fw-bold">Rate</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="ratio ratio-16x9 mt-5 video-container">
+                    <iframe width="560" height="315" src="{{ movie.trailer_url }}" frameborder="0"
+                        allowfullscreen></iframe>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

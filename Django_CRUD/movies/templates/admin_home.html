@@ -1,0 +1,32 @@
+{% extends 'admin_base.html' %}
+
+
+{% block content %}
+
+<main class="container py-5 mt-5">
+    <section class="card card-body bg-dark bg-gradient text-white">
+
+        <div class="text-center">
+            <img src="https://cdn.leonardo.ai/users/24dd7617-6434-48da-a3f6-f4dca4ccd3a3/generations/e0e4226f-3c6d-46fd-bc83-cfd1909e4c4e/variations/Default_Realiza_un_logo_para_una_pgina_web_de_Pelculas_usando_3_e0e4226f-3c6d-46fd-bc83-cfd1909e4c4e_0.png"
+                class="rounded" alt="Fix Film" style="width: 17%;">
+        </div>
+        <p class="lead">Explora, descubre y disfruta de una amplia selección de películas de diferentes géneros.
+
+            ¿Listo para sumergirte en el mundo del cine? Regístrate ahora para acceder a funciones exclusivas, como
+            agregar películas a tu lista personal, calificar tus favoritas y descubrir nuevas gemas cinematográficas.
+        </p>
+
+        <div class="text-center">
+            <a class="btn btn-info fw-bold" href="{% url 'signin' %}">
+                Signin
+            </a>
+            <a class="btn btn-secondary fw-bold" href="{% url 'signup' %}">
+                Signup
+            </a>
+        </div>
+
+    </section>
+</main>
+
+
+{% endblock %}
