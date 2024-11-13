@@ -1,6 +1,6 @@
 # Proyecto Django
 
-Este es un proyecto Django que te guía a través de los pasos básicos para correr la aplicación Django.
+Este es un proyecto Django que te guía a través de los pasos básicos para ejecutar la aplicación Django.
 
 ## Requisitos previos
 
